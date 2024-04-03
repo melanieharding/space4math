@@ -213,7 +213,7 @@ const ContactForm = (data: FormSlice): JSX.Element => {
                   }
                   className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                   onFocus={handleFocus}
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                 />
               </label>
             </div>
