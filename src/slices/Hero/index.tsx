@@ -40,7 +40,7 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
         className={cn(
           'mx-auto my-8 flex max-w-screen-xl flex-col items-center justify-center rounded-lg p-6 lg:p-12 backdrop-blur',
           {
-            'bg-primary/80': slice.variation !== 'default',
+            'bg-background/80': slice.variation !== 'default',
           }
         )}
       >
@@ -49,7 +49,7 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
             field={slice.primary.heading}
             components={{
               heading2: ({ children }) => (
-                <Heading as="h2" size="6xl" className="text-primary-foreground">
+                <Heading as="h2" size="6xl" className="">
                   {children}
                 </Heading>
               ),
@@ -61,7 +61,7 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
             field={slice.primary.description}
             components={{
               paragraph: ({ children }) => (
-                <p className="text-primary-foreground max-w-prose my-3 text-sm md:text-lg lg:text-xl">
+                <p className="max-w-prose my-3 text-sm md:text-lg lg:text-xl text-primary">
                   {children}
                 </p>
               ),
