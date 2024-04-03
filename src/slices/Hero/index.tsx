@@ -4,7 +4,7 @@ import { PrismicRichText } from '@/components/typography/PrismicRichText'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Content, isFilled } from '@prismicio/client'
-import { PrismicNextImage } from '@prismicio/next'
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { SliceComponentProps } from '@prismicio/react'
 
 /**
@@ -70,6 +70,7 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
         )}
         {isFilled.link(slice.primary.button_link) && (
           <Button
+            asChild
             variant={slice.primary.button_style || 'default'}
             size="lg"
             className={cn('mt-4 lg:mt-8', {
@@ -77,7 +78,9 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
               'text-primary-foreground': slice.primary.button_style === 'link',
             })}
           >
-            {slice.primary.button_label || 'Missing Button Label'}
+            <PrismicNextLink field={slice.primary.button_link}>
+              {slice.primary.button_label || 'Missing Button Label'}
+            </PrismicNextLink>
           </Button>
         )}
       </div>
