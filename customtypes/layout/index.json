@@ -1,0 +1,134 @@
+{
+  "format": "custom",
+  "id": "layout",
+  "label": "Layout",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Header": {
+      "cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "CTA Label",
+          "placeholder": ""
+        }
+      },
+      "cta_link": {
+        "type": "Link",
+        "config": {
+          "label": "CTA Link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    },
+    "Footer": {
+      "privacy_label": {
+        "type": "Text",
+        "config": {
+          "label": "Privacy Label",
+          "placeholder": ""
+        }
+      },
+      "privacy_link": {
+        "type": "Link",
+        "config": {
+          "label": "Privacy Link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "copyright": {
+        "type": "Text",
+        "config": {
+          "label": "Copyright",
+          "placeholder": ""
+        }
+      },
+      "social_media": {
+        "type": "Group",
+        "config": {
+          "label": "Social Media",
+          "repeat": true,
+          "fields": {
+            "platform": {
+              "type": "Select",
+              "config": {
+                "label": "Platform",
+                "placeholder": "",
+                "options": [
+                  "Facebook",
+                  "Instagram",
+                  "LinkedIn",
+                  "TikTok",
+                  "YouTube"
+                ]
+              }
+            },
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "footer_multi_column": {
+              "type": "SharedSlice"
+            },
+            "footer_heading": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

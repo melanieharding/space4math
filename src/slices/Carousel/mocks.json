@@ -1,0 +1,170 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "carefully",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"origin": {
+								"id": "7WAGthfGJ9w",
+								"url": "https://images.unsplash.com/photo-1582287104445-6754664dbdb2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMnx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+								"width": 5460,
+								"height": 3640
+							},
+							"url": "https://images.unsplash.com/photo-1582287104445-6754664dbdb2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMnx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+							"width": 5460,
+							"height": 3640,
+							"edit": {
+								"background": "transparent",
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								}
+							},
+							"credits": null,
+							"alt": "yellow lemon fruit on white surface",
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"url": "https://images.unsplash.com/photo-1559181567-c3190ca9959b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxM3x8ZnJ1aXR8ZW58MHx8fHwxNzEyMDg0MTU2fDA&ixlib=rb-4.0.3&q=85",
+							"alt": "two cherries",
+							"origin": {
+								"id": "vbAEHCrvXZ0",
+								"url": "https://images.unsplash.com/photo-1559181567-c3190ca9959b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxM3x8ZnJ1aXR8ZW58MHx8fHwxNzEyMDg0MTU2fDA&ixlib=rb-4.0.3&q=85",
+								"width": 2244,
+								"height": 2805
+							},
+							"width": 2244,
+							"height": 2805,
+							"edit": {
+								"background": "transparent",
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								}
+							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"url": "https://images.unsplash.com/photo-1588514206464-214a4d63ed18?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+							"alt": "sliced lemon on white background",
+							"origin": {
+								"id": "TREaif_QI6Y",
+								"url": "https://images.unsplash.com/photo-1588514206464-214a4d63ed18?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+								"width": 2336,
+								"height": 3504
+							},
+							"width": 2336,
+							"height": 3504,
+							"edit": {
+								"background": "transparent",
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								}
+							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw2fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MTIwMzc0ODB8MA&ixlib=rb-4.0.3&q=85",
+							"alt": "sliced fruit on white surface",
+							"origin": {
+								"id": "YSA1IRkGAsg",
+								"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw2fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MTIwMzc0ODB8MA&ixlib=rb-4.0.3&q=85",
+								"width": 5760,
+								"height": 3840
+							},
+							"width": 5760,
+							"height": 3840,
+							"edit": {
+								"background": "transparent",
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								}
+							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					]
+				]
+			},
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"image",
+						{
+							"url": "https://images.unsplash.com/photo-1547514701-42782101795e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxOHx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+							"alt": "two orange fruits on table",
+							"origin": {
+								"id": "nibgG33H0F8",
+								"url": "https://images.unsplash.com/photo-1547514701-42782101795e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxOHx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzEyMDM3NDgwfDA&ixlib=rb-4.0.3&q=85",
+								"width": 4000,
+								"height": 6000
+							},
+							"width": 4000,
+							"height": 6000,
+							"edit": {
+								"background": "transparent",
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								}
+							},
+							"credits": null,
+							"__TYPE__": "ImageContent",
+							"thumbnails": {}
+						}
+					]
+				]
+			}
+		]
+	}
+]
