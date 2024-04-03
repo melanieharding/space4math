@@ -20,7 +20,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
       as="blockquote"
     >
       <div className="mx-auto my-8 flex max-w-screen-md flex-col items-center justify-center">
-        <Quote width={55} height={55} />
+        <Quote width={55} height={55} className="text-primary" />
         <PrismicRichText
           field={slice.primary.quote}
           components={{
@@ -36,7 +36,7 @@ const Testimonial = ({ slice }: TestimonialProps): JSX.Element => {
           field={slice.primary.name}
           components={{
             paragraph: ({ children }) => (
-              <footer className="uppercase text-sm font-bold">
+              <footer className="uppercase text-sm font-bold font-heading">
                 {children}
               </footer>
             ),

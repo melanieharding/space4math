@@ -142,7 +142,8 @@ const ContactForm = (data: FormSlice): JSX.Element => {
         >
           <div
             className={cn('grid gap-y-6', {
-              'gap-y-14': errors.email || errors.name,
+              'gap-y-14':
+                errors.email || errors.name || errors.phone || errors.message,
             })}
           >
             <div className="relative">
@@ -212,6 +213,7 @@ const ContactForm = (data: FormSlice): JSX.Element => {
                   }
                   className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                   onFocus={handleFocus}
+                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 />
               </label>
             </div>
@@ -247,7 +249,7 @@ const ContactForm = (data: FormSlice): JSX.Element => {
 
           <div className="flex flex-col items-center lg:items-start">
             <SubmitButton text={button_text} variant={button_style} />
-            <p className="prose-a:text-primary-content prose prose-sm mt-3 prose-a:no-underline hover:prose-a:underline">
+            <p className="text-foreground prose-a:text-violet-400 prose prose-sm mt-3 prose-a:no-underline hover:prose-a:underline">
               This site is protected by reCAPTCHA and the{' '}
               <a href="https://policies.google.com/privacy">
                 Google Privacy Policy

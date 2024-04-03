@@ -34,7 +34,9 @@ const Process = ({ slice }: ProcessProps): JSX.Element => {
     >
       <div className="mx-auto my-8 flex max-w-screen-2xl flex-col items-center justify-center">
         {isFilled.keyText(slice.primary.title) && (
-          <p className="text-sm font-medium uppercase">{slice.primary.title}</p>
+          <p className="text-sm font-medium uppercase font-heading">
+            {slice.primary.title}
+          </p>
         )}
         {isFilled.richText(slice.primary.heading) && (
           <PrismicRichText
@@ -58,7 +60,9 @@ const Process = ({ slice }: ProcessProps): JSX.Element => {
               field={slice.primary.description}
               components={{
                 paragraph: ({ children }) => (
-                  <p className="mb-8 prose lg:prose-lg">{children}</p>
+                  <p className="mb-8 prose lg:prose-lg dark:prose-invert">
+                    {children}
+                  </p>
                 ),
               }}
             />
@@ -94,7 +98,9 @@ const Process = ({ slice }: ProcessProps): JSX.Element => {
                           field={item.description}
                           components={{
                             paragraph: ({ children }) => (
-                              <p className="mb-8 prose">{children}</p>
+                              <p className="mb-8 prose dark:prose-invert">
+                                {children}
+                              </p>
                             ),
                           }}
                         />

@@ -41,12 +41,23 @@ const Navbar = ({
         <div className="flex items-center justify-between">
           <Link href="/">
             {isFilled.image(logo) ? (
-              <PrismicNextImage
-                field={logo}
-                imgixParams={{ ar: '1:1', fit: 'crop' }}
-                height={60}
-                width={60}
-              />
+              <div className="flex items-center">
+                <PrismicNextImage
+                  field={logo}
+                  imgixParams={{ ar: '1:1', fit: 'crop' }}
+                  height={60}
+                  width={60}
+                />
+                {isFilled.keyText(site_title) && (
+                  <Heading
+                    as="h1"
+                    size="2xl"
+                    className="p-1.5 text-primary-foreground"
+                  >
+                    {site_title}
+                  </Heading>
+                )}
+              </div>
             ) : (
               <Heading as="h1" size="xl" className="p-1.5">
                 {site_title}

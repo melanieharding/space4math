@@ -30,7 +30,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
       <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-center rounded-lg py-4 lg:py-8">
         <div className="mb-4 lg:mb-8">
           {isFilled.keyText(slice.primary.title) && (
-            <p className="text-sm font-medium uppercase">
+            <p className="text-sm font-medium uppercase font-heading">
               {slice.primary.title}
             </p>
           )}

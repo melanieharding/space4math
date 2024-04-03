@@ -24,7 +24,7 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
       width="xl"
       className={cn('py-8 lg:pb-24', {
         'bg-secondary': slice.variation === 'secondary',
-        'bg-primary': slice.variation === 'primary',
+        'bg-primary/70': slice.variation === 'primary',
       })}
     >
       {isFilled.richText(slice.primary.heading) && (
@@ -55,7 +55,9 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
             field={slice.primary.description}
             components={{
               paragraph: ({ children }) => (
-                <p className="mb-8 prose lg:prose-lg">{children}</p>
+                <p className="mb-8 prose lg:prose-lg text-foreground">
+                  {children}
+                </p>
               ),
             }}
           />
@@ -70,7 +72,7 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
                   key={slice.id + index}
                   className={cn('w-[350px]', {
                     'bg-secondary': slice.variation === 'default',
-                    'bg-primary text-primary-foreground':
+                    'bg-primary/80 text-primary-foreground border-none shadow-lg':
                       slice.variation === 'primary',
                   })}
                 >
@@ -83,8 +85,7 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
                             as="h3"
                             size="3xl"
                             className={cn('lg:text-center', {
-                              'text-primary-foreground':
-                                slice.variation === 'primary',
+                              'text-foreground': slice.variation === 'primary',
                             })}
                           >
                             {children}
@@ -99,7 +100,9 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
                         field={item.feature_description}
                         components={{
                           paragraph: ({ children }) => (
-                            <p className="mb-8 prose">{children}</p>
+                            <p className="mb-8 prose text-foreground">
+                              {children}
+                            </p>
                           ),
                         }}
                       />

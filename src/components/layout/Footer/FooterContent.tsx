@@ -17,7 +17,7 @@ type FooterContentProps = {
 }
 const FooterContent = ({ data, settings }: FooterContentProps): JSX.Element => {
   return (
-    <Section as="footer" className="bg-primary text-primary-foreground">
+    <Section as="footer" className="bg-secondary text-primary-foreground">
       <SliceZone components={components} slices={data.slices1} />
 
       <div className="my-4 text-center lg:my-8">

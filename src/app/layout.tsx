@@ -4,6 +4,10 @@ import { createClient } from '@/prismicio'
 import Header from '@/components/layout/Header/Header'
 import { cn } from '@/lib/utils'
 import Footer from '@/components/layout/Footer/Footer'
+import {
+  Inter as FontSans,
+  Red_Hat_Display as FontHeading,
+} from 'next/font/google'
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient()
@@ -19,6 +23,20 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+/**
+ * Heading & Body fonts
+ */
+
+const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const fontHeading = FontHeading({
+  subsets: ['latin'],
+  variable: '--font-heading',
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +46,9 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'dark flex min-h-screen flex-col justify-between bg-background font-sans antialiased'
+          'dark flex min-h-screen flex-col justify-between bg-background font-sans antialiased',
+          fontSans.variable,
+          fontHeading.variable
         )}
       >
         <Header />
