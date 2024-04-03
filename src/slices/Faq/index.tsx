@@ -44,7 +44,7 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
                     field={item.question}
                     components={{
                       paragraph: ({ children }) => (
-                        <p className="prose lg:prose-lg xl:prose-xl font-semibold dark:prose-invert">
+                        <p className="prose lg:prose-lg xl:prose-xl font-semibold dark:prose-invert pr-4 text-left">
                           {children}
                         </p>
                       ),
