@@ -29,30 +29,70 @@ export default async function Page({
   const settings = await client.getSingle('settings')
   const pageNumber = { page: searchParams.page }
 
-  const jsonLd: Graph = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': `https://${settings.data.domain || `example.com`}/#${page.uid}`,
-        about: page.data.meta_description || undefined,
-        author: {
-          '@type': 'Organization',
-          name: settings.data.site_title || 'Fill In Site Title in CMS',
-        },
-        copyrightHolder: {
-          '@type': 'Organization',
-          name: settings.data.site_title || 'Fill In Site Title in CMS',
-        },
-        datePublished: page.first_publication_date,
-        dateModified: page.last_publication_date,
-        image:
-          page.data.meta_image.url ||
-          settings.data.site_meta_image.url ||
-          undefined,
-      },
-    ],
-  }
+  const jsonLd: Graph =
+    page.tags.indexOf('service') > -1
+      ? {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'Organization',
+              '@id': `https://${settings.data.domain || `example.com`}/#space4math`,
+              name: settings.data.site_title || 'Fill In Site Title in CMS',
+            },
+            {
+              '@type': 'WebPage',
+              '@id': `https://${settings.data.domain || `example.com`}/#${page.uid}`,
+              about: page.data.meta_description || undefined,
+              author: {
+                '@id': `https://${settings.data.domain || `example.com`}/#space4math`,
+              },
+              copyrightHolder: {
+                '@id': `https://${settings.data.domain || `example.com`}/#space4math`,
+              },
+              datePublished: page.first_publication_date,
+              dateModified: page.last_publication_date,
+              image:
+                page.data.meta_image.url ||
+                settings.data.site_meta_image.url ||
+                undefined,
+            },
+            {
+              '@type': 'Service',
+              name: asText(page.data.title) || '',
+              areaServed: 'New Jersey',
+              brand: {
+                '@id': `https://${settings.data.domain || `example.com`}/#space4math`,
+              },
+              provider: {
+                '@id': `https://${settings.data.domain || `example.com`}/#space4math`,
+              },
+            },
+          ],
+        }
+      : {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'WebPage',
+              '@id': `https://${settings.data.domain || `example.com`}/#${page.uid}`,
+              about: page.data.meta_description || undefined,
+              author: {
+                '@type': 'Organization',
+                name: settings.data.site_title || 'Fill In Site Title in CMS',
+              },
+              copyrightHolder: {
+                '@type': 'Organization',
+                name: settings.data.site_title || 'Fill In Site Title in CMS',
+              },
+              datePublished: page.first_publication_date,
+              dateModified: page.last_publication_date,
+              image:
+                page.data.meta_image.url ||
+                settings.data.site_meta_image.url ||
+                undefined,
+            },
+          ],
+        }
 
   return (
     <>
@@ -95,6 +135,7 @@ export async function generateMetadata({
       images: [
         page.data.meta_image.url || settings.data.site_meta_image.url || '',
       ],
+      siteName: settings.data.site_title || '',
     },
     alternates: {
       canonical: `https://${settings.data.domain || `example.com`}${page.url}`,

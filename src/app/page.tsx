@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [
         page.data.meta_image.url || settings.data.site_meta_image.url || '',
       ],
+      siteName: settings.data.site_title || '',
     },
   }
 }
