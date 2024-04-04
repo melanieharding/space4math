@@ -89,7 +89,7 @@ const Process = ({ slice }: ProcessProps): JSX.Element => {
                     </CardHeader>
                     <CardContent>
                       {isFilled.keyText(item.step_title) && (
-                        <p className="text-sm font-bold uppercase text-center my-1.5 lg:my-3">
+                        <p className="text-sm font-heading font-bold uppercase text-center my-1.5 lg:my-3">
                           {item.step_title}
                         </p>
                       )}
