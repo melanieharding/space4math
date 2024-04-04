@@ -6,7 +6,7 @@ import {
   KeyTextField,
   LinkField,
 } from '@prismicio/client'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Section from '../Section'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { buttonVariants } from '@/components/ui/button'
@@ -15,6 +15,7 @@ import { LayoutDocumentDataNavigationItem } from '../../../../prismicio-types'
 import MobileMenu from './MobileMenu'
 import Heading from '@/components/typography/Heading'
 import Link from 'next/link'
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
 
 type NavbarProps = {
   navigation: Array<LayoutDocumentDataNavigationItem>
@@ -31,8 +32,30 @@ const Navbar = ({
   cta_label = 'Take Action',
   site_title,
 }: NavbarProps) => {
+  const container = useRef(null)
+  const [hidden, setHidden] = useState(false)
+  const { scrollY } = useScroll()
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous: number = scrollY.getPrevious() || 0
+    if (latest > previous && latest > 150) {
+      setHidden(true)
+    } else if (latest === 0) {
+      setHidden(false)
+    } else {
+      setHidden(false)
+    }
+  })
+
   return (
-    <header className={cn('bg-background shadow-sm')}>
+    <motion.header
+      ref={container}
+      variants={{ visible: { y: 0 }, hidden: { y: '-100%' } }}
+      animate={hidden ? 'hidden' : 'visible'}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+      className={cn(
+        'sticky top-0 z-20 w-full bg-background transition duration-300 ease-in-out'
+      )}
+    >
       <Section
         width="xl"
         padded={false}
@@ -86,7 +109,7 @@ const Navbar = ({
           </div>
         </div>
       </Section>
-    </header>
+    </motion.header>
   )
 }
 

@@ -28,6 +28,15 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"animation_direction": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
 			}
 		},
 		"items": [
@@ -229,6 +238,15 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"animation_direction": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
 			}
 		},
 		"items": [
@@ -430,6 +448,15 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"animation_direction": {
+				"__TYPE__": "FieldContent",
+				"value": "right",
+				"type": "Select"
 			}
 		},
 		"items": [

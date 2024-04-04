@@ -1,3 +1,4 @@
+import Reveal from '@/components/layout/Reveal'
 import Section from '@/components/layout/Section'
 import Heading from '@/components/typography/Heading'
 import { PrismicRichText } from '@/components/typography/PrismicRichText'
@@ -5,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { Content, asText, isFilled } from '@prismicio/client'
-import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
+import { PrismicNextLink } from '@prismicio/next'
 import { SliceComponentProps } from '@prismicio/react'
 
 /**
@@ -63,77 +64,82 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
           />
         </div>
       )}
-      <div className="mt-8 flex flex-wrap justify-evenly gap-12 lg:mt-0 lg:gap-4">
-        {slice.items.length > 0 &&
-          slice.items.map((item, index) => {
-            if (isFilled.richText(item.feature_heading)) {
-              return (
-                <Card
-                  key={slice.id + index}
-                  className={cn('w-[350px]', {
-                    'bg-secondary': slice.variation === 'default',
-                    'bg-primary/80 text-primary-foreground border-none shadow-lg':
-                      slice.variation === 'primary',
-                  })}
-                >
-                  <CardHeader>
-                    <PrismicRichText
-                      field={item.feature_heading}
-                      components={{
-                        heading3: ({ children }) => (
-                          <Heading
-                            as="h3"
-                            size="3xl"
-                            className={cn('lg:text-center', {
-                              'text-foreground': slice.variation === 'primary',
-                            })}
-                          >
-                            {children}
-                          </Heading>
-                        ),
-                      }}
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    {isFilled.richText(item.feature_description) && (
+      <Reveal
+        allowAnimation={slice.primary.allow_animation}
+        direction={slice.primary.animation_direction}
+      >
+        <div className="mt-8 flex flex-wrap justify-evenly gap-12 lg:mt-0 lg:gap-4">
+          {slice.items.length > 0 &&
+            slice.items.map((item, index) => {
+              if (isFilled.richText(item.feature_heading)) {
+                return (
+                  <Card
+                    key={slice.id + index}
+                    className={cn('w-[350px]', {
+                      'bg-secondary': slice.variation === 'default',
+                      'bg-primary/80 text-primary-foreground shadow-lg':
+                        slice.variation === 'primary',
+                    })}
+                  >
+                    <CardHeader>
                       <PrismicRichText
-                        field={item.feature_description}
+                        field={item.feature_heading}
                         components={{
-                          paragraph: ({ children }) => (
-                            <p className="mb-8 prose text-foreground">
+                          heading3: ({ children }) => (
+                            <Heading
+                              as="h3"
+                              size="3xl"
+                              className={cn('lg:text-center', {
+                                'text-foreground':
+                                  slice.variation === 'primary',
+                              })}
+                            >
                               {children}
-                            </p>
+                            </Heading>
                           ),
                         }}
                       />
-                    )}
-
-                    {isFilled.link(item.button_link) && (
-                      <CardFooter className="flex justify-center">
-                        <Button
-                          variant={
-                            slice.variation === 'primary'
-                              ? 'secondary'
-                              : 'default'
-                          }
-                          asChild
-                          className="mt-4 lg:mt-8"
-                        >
-                          <PrismicNextLink field={item.button_link}>
-                            {item.button_label || 'Missing Label'}{' '}
-                            <span className="sr-only">
-                              About {asText(item.feature_heading)}
-                            </span>
-                          </PrismicNextLink>
-                        </Button>
-                      </CardFooter>
-                    )}
-                  </CardContent>
-                </Card>
-              )
-            } else return null
-          })}
-      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {isFilled.richText(item.feature_description) && (
+                        <PrismicRichText
+                          field={item.feature_description}
+                          components={{
+                            paragraph: ({ children }) => (
+                              <p className="mb-8 prose text-foreground">
+                                {children}
+                              </p>
+                            ),
+                          }}
+                        />
+                      )}
+                      {isFilled.link(item.button_link) && (
+                        <CardFooter className="flex justify-center">
+                          <Button
+                            variant={
+                              slice.variation === 'primary'
+                                ? 'secondary'
+                                : 'default'
+                            }
+                            asChild
+                            className="mt-4 lg:mt-8"
+                          >
+                            <PrismicNextLink field={item.button_link}>
+                              {item.button_label || 'Missing Label'}{' '}
+                              <span className="sr-only">
+                                About {asText(item.feature_heading)}
+                              </span>
+                            </PrismicNextLink>
+                          </Button>
+                        </CardFooter>
+                      )}
+                    </CardContent>
+                  </Card>
+                )
+              } else return null
+            })}
+        </div>
+      </Reveal>
     </Section>
   )
 }

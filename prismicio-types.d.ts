@@ -809,6 +809,31 @@ export interface FeaturesSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
+  /**
+   * Allow Animation field in *Features → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: features.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Features → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: features.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
+    "filled"
+  >;
 }
 
 /**
@@ -892,6 +917,31 @@ export interface FeaturesSliceSecondaryPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
+  /**
+   * Allow Animation field in *Features → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: features.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Features → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: features.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
+    "filled"
+  >;
 }
 
 /**
@@ -975,6 +1025,31 @@ export interface FeaturesSlicePrimaryPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField;
+
+  /**
+   * Allow Animation field in *Features → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: features.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Features → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: features.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
+    "filled"
+  >;
 }
 
 /**
@@ -1438,6 +1513,31 @@ export interface HeroSliceDefaultPrimary {
     "default" | "secondary" | "outline" | "ghost" | "destructive" | "link",
     "filled"
   >;
+
+  /**
+   * Allow Animation field in *Hero → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: hero.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Hero → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: hero.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
+    "filled"
+  >;
 }
 
 /**
@@ -1520,6 +1620,31 @@ export interface HeroSliceWithImagePrimary {
     "default" | "secondary" | "outline" | "ghost" | "destructive" | "link",
     "filled"
   >;
+
+  /**
+   * Allow Animation field in *Hero → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: hero.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Hero → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: hero.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
+    "filled"
+  >;
 }
 
 /**
@@ -1600,6 +1725,31 @@ export interface HeroSliceContentHeightPrimary {
    */
   button_style: prismic.SelectField<
     "default" | "secondary" | "outline" | "ghost" | "destructive" | "link",
+    "filled"
+  >;
+
+  /**
+   * Allow Animation field in *Hero → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: hero.primary.allow_animation
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  allow_animation: prismic.BooleanField;
+
+  /**
+   * Animation Direction field in *Hero → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: none
+   * - **API ID Path**: hero.primary.animation_direction
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  animation_direction: prismic.SelectField<
+    "none" | "left" | "right" | "up" | "down",
     "filled"
   >;
 }

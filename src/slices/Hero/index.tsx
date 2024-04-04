@@ -1,3 +1,4 @@
+import Reveal from '@/components/layout/Reveal'
 import Section from '@/components/layout/Section'
 import Heading from '@/components/typography/Heading'
 import { PrismicRichText } from '@/components/typography/PrismicRichText'
@@ -36,54 +37,60 @@ const Hero = ({ slice, index }: HeroProps): JSX.Element => {
           priority={index === 0}
         />
       )}
-      <div
-        className={cn(
-          'mx-auto my-8 flex max-w-screen-2xl flex-col items-center justify-center rounded-lg p-6 lg:p-12 backdrop-blur',
-          {
-            'bg-background/80': slice.variation !== 'default',
-          }
-        )}
+      <Reveal
+        allowAnimation={slice.primary.allow_animation}
+        direction={slice.primary.animation_direction}
       >
-        {isFilled.richText(slice.primary.heading) && (
-          <PrismicRichText
-            field={slice.primary.heading}
-            components={{
-              heading2: ({ children }) => (
-                <Heading as="h2" size="6xl" className="dark:text-violet-300">
-                  {children}
-                </Heading>
-              ),
-            }}
-          />
-        )}
-        {isFilled.richText(slice.primary.description) && (
-          <PrismicRichText
-            field={slice.primary.description}
-            components={{
-              paragraph: ({ children }) => (
-                <p className="max-w-prose my-3 text-sm md:text-lg lg:text-xl">
-                  {children}
-                </p>
-              ),
-            }}
-          />
-        )}
-        {isFilled.link(slice.primary.button_link) && (
-          <Button
-            asChild
-            variant={slice.primary.button_style || 'default'}
-            size="lg"
-            className={cn('mt-4 lg:mt-8', {
-              'bg-primary': slice.primary.button_style === 'outline',
-              'text-primary-foreground': slice.primary.button_style === 'link',
-            })}
-          >
-            <PrismicNextLink field={slice.primary.button_link}>
-              {slice.primary.button_label || 'Missing Button Label'}
-            </PrismicNextLink>
-          </Button>
-        )}
-      </div>
+        <div
+          className={cn(
+            'mx-auto my-8 flex max-w-screen-2xl flex-col items-center justify-center rounded-lg p-6 lg:p-12 backdrop-blur',
+            {
+              'bg-background/80': slice.variation !== 'default',
+            }
+          )}
+        >
+          {isFilled.richText(slice.primary.heading) && (
+            <PrismicRichText
+              field={slice.primary.heading}
+              components={{
+                heading2: ({ children }) => (
+                  <Heading as="h2" size="6xl" className="dark:text-violet-300">
+                    {children}
+                  </Heading>
+                ),
+              }}
+            />
+          )}
+          {isFilled.richText(slice.primary.description) && (
+            <PrismicRichText
+              field={slice.primary.description}
+              components={{
+                paragraph: ({ children }) => (
+                  <p className="max-w-prose my-3 text-sm md:text-lg lg:text-xl">
+                    {children}
+                  </p>
+                ),
+              }}
+            />
+          )}
+          {isFilled.link(slice.primary.button_link) && (
+            <Button
+              asChild
+              variant={slice.primary.button_style || 'default'}
+              size="lg"
+              className={cn('mt-4 lg:mt-8', {
+                'bg-primary': slice.primary.button_style === 'outline',
+                'text-primary-foreground':
+                  slice.primary.button_style === 'link',
+              })}
+            >
+              <PrismicNextLink field={slice.primary.button_link}>
+                {slice.primary.button_label || 'Missing Button Label'}
+              </PrismicNextLink>
+            </Button>
+          )}
+        </div>
+      </Reveal>
     </Section>
   )
 }

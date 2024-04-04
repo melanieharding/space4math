@@ -29,6 +29,30 @@
             "allowTargetBlank": true,
             "single": "paragraph,strong,em"
           }
+        },
+        "allow_animation": {
+          "type": "Boolean",
+          "config": {
+            "label": "Allow Animation",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "animation_direction": {
+          "type": "Select",
+          "config": {
+            "label": "Animation Direction",
+            "placeholder": "",
+            "options": [
+              "none",
+              "left",
+              "right",
+              "up",
+              "down"
+            ],
+            "default_value": "none"
+          }
         }
       },
       "items": {
@@ -92,6 +116,30 @@
             "allowTargetBlank": true,
             "single": "paragraph,strong,em"
           }
+        },
+        "allow_animation": {
+          "type": "Boolean",
+          "config": {
+            "label": "Allow Animation",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "animation_direction": {
+          "type": "Select",
+          "config": {
+            "label": "Animation Direction",
+            "placeholder": "",
+            "options": [
+              "none",
+              "left",
+              "right",
+              "up",
+              "down"
+            ],
+            "default_value": "none"
+          }
         }
       },
       "items": {
@@ -154,6 +202,30 @@
             "placeholder": "Enter short section description",
             "allowTargetBlank": true,
             "single": "paragraph,strong,em"
+          }
+        },
+        "allow_animation": {
+          "type": "Boolean",
+          "config": {
+            "label": "Allow Animation",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "animation_direction": {
+          "type": "Select",
+          "config": {
+            "label": "Animation Direction",
+            "placeholder": "",
+            "options": [
+              "none",
+              "left",
+              "right",
+              "up",
+              "down"
+            ],
+            "default_value": "none"
           }
         }
       },

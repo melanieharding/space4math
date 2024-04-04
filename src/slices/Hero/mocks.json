@@ -45,6 +45,15 @@
 				"__TYPE__": "FieldContent",
 				"type": "Select",
 				"value": "outline"
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"animation_direction": {
+				"__TYPE__": "FieldContent",
+				"value": "none",
+				"type": "Select"
 			}
 		},
 		"items": []
@@ -118,6 +127,10 @@
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "Custom Button Text"
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": [
@@ -192,6 +205,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "ghost",
 				"type": "Select"
+			},
+			"allow_animation": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": [
