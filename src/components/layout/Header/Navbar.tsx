@@ -91,7 +91,11 @@ const Navbar = ({
             {navigation.length > 0 && (
               <>
                 <DesktopMenu navigation={navigation} />
-                <MobileMenu site_title={site_title} navigation={navigation} />
+                <MobileMenu
+                  site_title={site_title}
+                  navigation={navigation}
+                  logo={logo}
+                />
               </>
             )}
 
