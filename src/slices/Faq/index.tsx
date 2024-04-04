@@ -8,6 +8,8 @@ import {
 } from '@/components/ui/accordion'
 import Section from '@/components/layout/Section'
 import { PrismicRichText } from '@/components/typography/PrismicRichText'
+import Heading from '@/components/typography/Heading'
+import { cn } from '@/lib/utils'
 
 /**
  * Props for `Faq`.
@@ -23,9 +25,23 @@ const Faq = ({ slice }: FaqProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       width="md"
+      className="py-8 lg:pb-16"
     >
       <div className="flex justify-center">
-        <PrismicRichText field={slice.primary.heading} />
+        <PrismicRichText
+          field={slice.primary.heading}
+          components={{
+            heading2: ({ children }) => (
+              <Heading
+                as="h2"
+                size="5xl"
+                className={cn('py-4 lg:py-8 lg:text-center')}
+              >
+                {children}
+              </Heading>
+            ),
+          }}
+        />
       </div>
       {slice.items.length > 0 && (
         <Accordion
