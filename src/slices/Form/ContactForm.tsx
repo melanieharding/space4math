@@ -44,6 +44,9 @@ const ContactForm = (data: FormSlice): JSX.Element => {
   } = useForm<FormValues>()
 
   const [success, setSuccess] = React.useState<boolean | null>(null)
+  const [submitting, setIsSubmitting] = React.useState<boolean | undefined>(
+    false
+  )
   const [formInteraction, setFormInteraction] = React.useState(false)
   const handleFocus = () => {
     !formInteraction && setFormInteraction(true)
@@ -100,12 +103,12 @@ const ContactForm = (data: FormSlice): JSX.Element => {
   }: SubmitButtonProps): JSX.Element {
     return (
       <Button
-        disabled={isSubmitting}
+        disabled={submitting}
         type="submit"
-        aria-disabled={isSubmitting}
+        aria-disabled={submitting}
         variant={variant}
       >
-        {text}
+        {!submitting ? text : 'Hang Tight. Sending Your Message'}
       </Button>
     )
   }
@@ -113,154 +116,158 @@ const ContactForm = (data: FormSlice): JSX.Element => {
   return (
     <>
       {success === true && (
-        <p className="text-xl text-color-primary">
+        <p className="text-xl text-center text-violet-300 max-w-prose mx-auto">
           Thank you for getting in touch. We will contact you soon!
         </p>
       )}
-      {success !== true && (
-        <form
-          className="my-12 flex flex-col gap-y-4 max-w-screen-sm mx-auto"
-          action={async (formData: FormData) => {
-            trigger()
-            if (!isValid) return
-            // calling server action passed into the client component here (if the form is valid)
-            window.grecaptcha.ready(() => {
-              window.grecaptcha
-                .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, {
-                  action: 'submit',
-                })
-                .then(async (recaptchaToken: string) => {
-                  formData.set('token', recaptchaToken)
-                  const { message } = await sendMessage(formData)
-                  if (message === 200) {
-                    reset()
-                    setSuccess(true)
-                  }
-                })
-            })
-          }}
-        >
-          <div
-            className={cn('grid gap-y-6', {
-              'gap-y-14':
-                errors.email || errors.name || errors.phone || errors.message,
-            })}
-          >
-            <div className="relative">
-              {errors?.name && (
-                <p className="text-destructive absolute -top-10">
-                  &darr; {errors?.name?.message}
-                </p>
-              )}
-              <label htmlFor={'name'}>
-                <span className="sr-only">
-                  {name_label || 'What is your name?'}
-                </span>
-                <input
-                  id="name"
-                  {...register('name', {
-                    required: 'Your name is required.',
-                  })}
-                  type="text"
-                  placeholder={name_placeholder || 'Enter your name here'}
-                  className="w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                  onFocus={handleFocus}
-                />
-              </label>
-            </div>
-            <div className="relative">
-              {errors?.email && (
-                <p className="text-destructive absolute -top-10">
-                  {' '}
-                  &darr; {errors?.email?.message}
-                </p>
-              )}
-              <label htmlFor={'email'}>
-                <span className="sr-only">
-                  {email_label || 'What is your email address?'}
-                </span>
-                <input
-                  id="email"
-                  {...register('email', {
-                    required: 'Your email address is required.',
-                  })}
-                  type="email"
-                  placeholder={email_placeholder || 'Enter your email here'}
-                  className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
-                  onFocus={handleFocus}
-                />
-              </label>
-            </div>
-            <div className="relative">
-              {errors?.phone && (
-                <p className="text-destructive absolute -top-10">
-                  {' '}
-                  &darr; {errors?.phone?.message}
-                </p>
-              )}
-              <label htmlFor={'phone'}>
-                <span className="sr-only">
-                  {phone_label || 'What is your phone number?'}
-                </span>
-                <input
-                  id="phone"
-                  {...register('phone', {
-                    required: 'Your phone number is required.',
-                  })}
-                  type="tel"
-                  placeholder={
-                    phone_placeholder || 'Enter your phone number here'
-                  }
-                  className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
-                  onFocus={handleFocus}
-                  pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-                />
-              </label>
-            </div>
-            <div className="relative">
-              {errors?.message && (
-                <p className="text-destructive absolute -top-10">
-                  {' '}
-                  &darr; {errors?.message?.message}
-                </p>
-              )}
-              <label htmlFor="message">
-                <span className="sr-only">
-                  {message_label || `Compose your message to us below:`}
-                </span>
-                <textarea
-                  // name='message'
-                  id="message"
-                  cols={30}
-                  rows={10}
-                  placeholder={
-                    message_placeholder || `Craft your message to us here...`
-                  }
-                  className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
-                  onFocus={handleFocus}
-                  {...register('message', {
-                    required:
-                      'Your message is required so we know how we can help.',
-                  })}
-                />
-              </label>
-            </div>
-          </div>
 
-          <div className="flex flex-col items-center lg:items-start">
-            <SubmitButton text={button_text} variant={button_style} />
-            <p className="text-foreground prose-a:text-violet-400 prose prose-sm mt-3 prose-a:no-underline hover:prose-a:underline">
-              This site is protected by reCAPTCHA and the{' '}
-              <a href="https://policies.google.com/privacy">
-                Google Privacy Policy
-              </a>{' '}
-              and{' '}
-              <a href="https://policies.google.com/terms">Terms of Service</a>{' '}
-              apply.
-            </p>
+      <form
+        className="my-12 flex flex-col gap-y-4 max-w-screen-sm mx-auto"
+        action={async (formData: FormData) => {
+          trigger()
+          setIsSubmitting(true)
+          if (!isValid) return
+          // calling server action passed into the client component here (if the form is valid)
+          window.grecaptcha.ready(() => {
+            window.grecaptcha
+              .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, {
+                action: 'submit',
+              })
+              .then(async (recaptchaToken: string) => {
+                formData.set('token', recaptchaToken)
+
+                const { message } = await sendMessage(formData)
+                if (message === 200) {
+                  reset()
+                  setIsSubmitting(false)
+                  setSuccess(true)
+                  setTimeout(() => {
+                    setSuccess(false)
+                  }, 10000)
+                }
+              })
+          })
+        }}
+      >
+        <div
+          className={cn('grid gap-y-6', {
+            'gap-y-14':
+              errors.email || errors.name || errors.phone || errors.message,
+          })}
+        >
+          <div className="relative">
+            {errors?.name && (
+              <p className="text-destructive absolute -top-10">
+                &darr; {errors?.name?.message}
+              </p>
+            )}
+            <label htmlFor={'name'}>
+              <span className="sr-only">
+                {name_label || 'What is your name?'}
+              </span>
+              <input
+                id="name"
+                {...register('name', {
+                  required: 'Your name is required.',
+                })}
+                type="text"
+                placeholder={name_placeholder || 'Enter your name here'}
+                className="w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                onFocus={handleFocus}
+              />
+            </label>
           </div>
-        </form>
-      )}
+          <div className="relative">
+            {errors?.email && (
+              <p className="text-destructive absolute -top-10">
+                {' '}
+                &darr; {errors?.email?.message}
+              </p>
+            )}
+            <label htmlFor={'email'}>
+              <span className="sr-only">
+                {email_label || 'What is your email address?'}
+              </span>
+              <input
+                id="email"
+                {...register('email', {
+                  required: 'Your email address is required.',
+                })}
+                type="email"
+                placeholder={email_placeholder || 'Enter your email here'}
+                className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                onFocus={handleFocus}
+              />
+            </label>
+          </div>
+          <div className="relative">
+            {errors?.phone && (
+              <p className="text-destructive absolute -top-10">
+                {' '}
+                &darr; {errors?.phone?.message}
+              </p>
+            )}
+            <label htmlFor={'phone'}>
+              <span className="sr-only">
+                {phone_label || 'What is your phone number?'}
+              </span>
+              <input
+                id="phone"
+                {...register('phone', {
+                  required: 'Your phone number is required.',
+                })}
+                type="tel"
+                placeholder={
+                  phone_placeholder || 'Enter your phone number here'
+                }
+                className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                onFocus={handleFocus}
+                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+              />
+            </label>
+          </div>
+          <div className="relative">
+            {errors?.message && (
+              <p className="text-destructive absolute -top-10">
+                {' '}
+                &darr; {errors?.message?.message}
+              </p>
+            )}
+            <label htmlFor="message">
+              <span className="sr-only">
+                {message_label || `Compose your message to us below:`}
+              </span>
+              <textarea
+                // name='message'
+                id="message"
+                cols={30}
+                rows={10}
+                placeholder={
+                  message_placeholder || `Craft your message to us here...`
+                }
+                className={`w-full rounded focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                onFocus={handleFocus}
+                {...register('message', {
+                  required:
+                    'Your message is required so we know how we can help.',
+                })}
+              />
+            </label>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center lg:items-start">
+          <SubmitButton text={button_text} variant={button_style} />
+          <p className="text-foreground prose-a:text-violet-400 prose prose-sm mt-3 prose-a:no-underline hover:prose-a:underline">
+            This site is protected by reCAPTCHA and the{' '}
+            <a href="https://policies.google.com/privacy">
+              Google Privacy Policy
+            </a>{' '}
+            and <a href="https://policies.google.com/terms">Terms of Service</a>{' '}
+            apply.
+          </p>
+        </div>
+      </form>
     </>
   )
 }
