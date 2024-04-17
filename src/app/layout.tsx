@@ -8,6 +8,9 @@ import {
   Inter as FontSans,
   Red_Hat_Display as FontHeading,
 } from 'next/font/google'
+import { Suspense } from 'react'
+import Analytics from '@/components/layout/Analytics'
+import Consent from '@/components/layout/Consent'
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient()
@@ -51,9 +54,13 @@ export default function RootLayout({
           fontHeading.variable
         )}
       >
+        <Suspense>
+          <Analytics />
+        </Suspense>
         <Header />
         {children}
         <Footer />
+        <Consent />
       </body>
     </html>
   )
